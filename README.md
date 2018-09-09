@@ -16,8 +16,7 @@ Por medio del presente proyecto realizaré **desde cero** la configuración y pr
 - [ ] 
 
 ## Preconfiguración
-```
-diskutil list
-diskutil unmountdisk /dev/NOMBRE
-sudo dd if=Raspbian.img of=/dev/NOMBRE bs=2m
-```
+utilizamos ` diskutil list ` para ubicar nuestro disco, en mi caso disk2
+entramos al directorio donde se encuentra la imagen ` cd Downloads/ `
+desmontamos el disco con ` diskutil unmountdisk /dev/disk2 `
+y ejecutamos ` sudo dd if=Raspbian.img of=/dev/disk2 bs=2m `
