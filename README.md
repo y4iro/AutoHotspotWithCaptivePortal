@@ -16,6 +16,8 @@ Por medio del presente proyecto realizaré **desde cero** la configuración y pr
 - [ ] 
 
 ## Preconfiguración
-"""
-fgd
-"""
+```
+diskutil list
+diskutil unmountdisk /dev/NOMBRE
+sudo dd if=Raspbian.img of=/dev/NOMBRE bs=2m
+```
