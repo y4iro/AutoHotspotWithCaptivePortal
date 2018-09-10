@@ -17,7 +17,7 @@ Por medio del presente proyecto realizaré **desde cero** la configuración y pr
 
 ## Proceso Completo
 
-### Cargando la imagen | [^1]:  [Cómo empezar a usar Raspberry Pi en Mac](https://hipertextual.com/archivo/2014/04/raspberry-pi-mac/).
+### Cargando la imagen | 1
 Utilizamos ` diskutil list ` para ubicar nuestro disco, en mi caso **disk2**. 
 Entramos al directorio donde se encuentra la imagen ` cd Downloads/ `.
 Desmontamos el disco con ` diskutil unmountdisk /dev/disk2 `.
@@ -36,6 +36,7 @@ network={
  key_mgmt=WPA-PSK 
 }
 ```
+Ya para terminar la expulsamos con `sudo diskutil eject /dev/disk2`.
 Colocándole la memoria y conectándola a la corriente o a nuestra computadora podremos acceder a ella de dos formas: `ssh pi@DIRECCION_IP_DE_LA_RASP ` o bien, si está directamente a la computadora con ` ssh pi@raspberrypi.local `. En ambos casos nos solicitará la contraseña, `raspberry`.
 
 **Nota**: Al ser un dispositivo para estar conectado siempre a internet, lo mejor será cambiar la contraseña del mismo. Lo podemos hacer ejecutando `sudo passwd` y nos solicita digitarla dos veces.
