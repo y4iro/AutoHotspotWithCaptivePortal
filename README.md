@@ -22,11 +22,13 @@ Utilizamos ` diskutil list ` para ubicar nuestro disco, en mi caso **disk2**.
 Entramos al directorio donde se encuentra la imagen ` cd Downloads/ `.
 Desmontamos el disco con ` diskutil unmountdisk /dev/disk2 `.
 Ejecutamos ` sudo dd if=NOMBRE_DE_LA_IMAGEN.img of=/dev/disk2 bs=2m `, solicita contraseña y tras ingresarla esperamos.
+Entramos al directorio con `cd /Volumes/boot/` (siendo boot el nombre de la tarjeta) y ejecutamos `touch ssh` para habilitar la conexión por SSH.
 
 ## Configurando el dispositivo
 
 ```
 ssh pi@raspberry.local
+```
 
 
 ### Enlaces Generales
