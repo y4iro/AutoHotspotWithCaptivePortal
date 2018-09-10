@@ -22,7 +22,20 @@ Utilizamos ` diskutil list ` para ubicar nuestro disco, en mi caso **disk2**.
 Entramos al directorio donde se encuentra la imagen ` cd Downloads/ `.
 Desmontamos el disco con ` diskutil unmountdisk /dev/disk2 `.
 Ejecutamos ` sudo dd if=NOMBRE_DE_LA_IMAGEN.img of=/dev/disk2 bs=2m `, solicita contraseña y tras ingresarla esperamos.
-Entramos al directorio con `cd /Volumes/boot/` (siendo boot el nombre de la tarjeta) y ejecutamos `touch ssh` para habilitar la conexión por SSH.
+Entramos al directorio con `cd /Volumes/boot/` (siendo boot el nombre de la tarjeta) y ejecutamos `touch ssh` para habilitar la conexión por SSH, de igual forma, creamos un nuevo archivo con ` nano wpa_supplicant.conf ` y le agregamos el siguiente código:
+
+```
+# /etc/wpa_supplicant/wpa_supplicant.conf
+
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev 
+update_config=1
+
+network={
+ ssid="NOMBRE_DE_TU_SSID"
+ psk="CONTRASEÑA"
+ key_mgmt=WPA-PSK 
+}
+```
 
 ## Configurando el dispositivo
 
