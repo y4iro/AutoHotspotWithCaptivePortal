@@ -21,7 +21,7 @@ Por medio del presente proyecto realizaré **desde cero** la configuración y pr
 Utilizamos ` diskutil list ` para ubicar nuestro disco, en mi caso **disk2**. 
 Entramos al directorio donde se encuentra la imagen ` cd Downloads/ `.
 Desmontamos el disco con ` diskutil unmountdisk /dev/disk2 `.
-Ejecutamos ` sudo dd if=NOMBRE_DE_LA_IMAGEN.img of=/dev/disk2 bs=2m `.
+Ejecutamos ` sudo dd if=NOMBRE_DE_LA_IMAGEN.img of=/dev/disk2 bs=2m `, solicita contraseña y tras ingresarla esperamos.
 
 ## Configurando el dispositivo
 
