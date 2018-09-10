@@ -17,11 +17,18 @@ Por medio del presente proyecto realizaré **desde cero** la configuración y pr
 
 ## Proceso Completo
 
-### Cargando la imagen
-Utilizamos ` diskutil list ` para ubicar nuestro disco, en mi caso **disk2**.
+### Cargando la imagen | 1
+Utilizamos ` diskutil list ` para ubicar nuestro disco, en mi caso **disk2**. 
 Entramos al directorio donde se encuentra la imagen ` cd Downloads/ `.
 Desmontamos el disco con ` diskutil unmountdisk /dev/disk2 `.
 Ejecutamos ` sudo dd if=NOMBRE_DE_LA_IMAGEN.img of=/dev/disk2 bs=2m `.
 
+## Configurando el dispositivo
+
+```
+ssh pi@raspberry.local
+
+
 ### Enlaces Generales
-[Cómo empezar a usar Raspberry Pi en Mac](https://hipertextual.com/archivo/2014/04/raspberry-pi-mac/)
+Puedes encontrar más información en los siguientes enlaces:
+1. [Cómo empezar a usar Raspberry Pi en Mac](https://hipertextual.com/archivo/2014/04/raspberry-pi-mac/)
