@@ -13,7 +13,7 @@ Por medio del presente proyecto realizaré **desde cero** la configuración y pr
 - La puerta de acceso abrirá o cerrará.
 
 ## Materiales
-- [ ] 
+- [ ] MacBook
 
 ## Proceso Completo
 
@@ -36,6 +36,9 @@ network={
  key_mgmt=WPA-PSK 
 }
 ```
+Colocándole la memoria y conectándola a la corriente o a nuestra computadora podremos acceder a ella de dos formas: `ssh pi@DIRECCION_IP_DE_LA_RASP ` o bien, si está directamente a la computadora con ` ssh pi@raspberrypi.local `. En ambos casos nos solicitará la contraseña, `raspberry`.
+
+**Nota**: Al ser un dispositivo para estar conectado siempre a internet, lo mejor será cambiar la contraseña del mismo.
 
 ## Configurando el dispositivo
 
