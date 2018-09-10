@@ -26,9 +26,7 @@ Entramos al directorio con `cd /Volumes/boot/` (siendo boot el nombre de la tarj
 
 ## Configurando el dispositivo
 
-```
-ssh pi@raspberry.local
-```
+Colocamos la memoria en la Raspberry® y en terminal ejecutamos ` ssh pi@raspberrypi.local `
 
 
 ### Enlaces Generales
