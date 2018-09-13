@@ -64,3 +64,17 @@ Puedes encontrar más información en los siguientes enlaces:
 1. [Sitio oficial de Raspberry®](https://www.raspberrypi.org)
 2. [Cómo empezar a usar Raspberry Pi en Mac](https://hipertextual.com/archivo/2014/04/raspberry-pi-mac/)
 3. [Auto WiFi Hotspot Switch Internet](http://www.raspberryconnect.com/network/item/330-raspberry-pi-auto-wifi-hotspot-switch-internet)
+
+
+### TO ADD LATER
+```
+
+# echo "LC_ALL=en_US.UTF-8" >> /etc/environment
+# echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+# echo "LANG=en_US.UTF-8" > /etc/locale.conf
+# locale-gen en_US.UTF-8
+```
+
+
+These commands saved my life
+https://unix.stackexchange.com/a/431963
