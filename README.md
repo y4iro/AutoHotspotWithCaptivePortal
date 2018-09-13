@@ -13,7 +13,7 @@ Por medio del presente proyecto realizaré **desde cero** la configuración y pr
 - La puerta de acceso abrirá o cerrará.
 
 ## Materiales
-- [ ] Memoria microSD
+- [ ] Memoria microSD de por lo menos 8GB
 - [ ] Raspberry Pi®
 - [ ] [última versión de Raspian](https://www.raspberrypi.org/downloads/raspbian/)
 - [ ] MacBook (todo el proceso se realizará desde **Terminal**)
@@ -50,7 +50,6 @@ Para configuración inicial antes de empezar, debemos ejecutar lo siguiente:
 ```
 sudo apt-get update
 sudo apt-get upgrade
-sudo apt-get install dnsmasq hostapd
 ```
 
 ## Preparándolo para permitirle ser un Access Point
@@ -64,3 +63,4 @@ sudo systemctl stop hostapdd
 Puedes encontrar más información en los siguientes enlaces:
 1. [Sitio oficial de Raspberry®](https://www.raspberrypi.org)
 2. [Cómo empezar a usar Raspberry Pi en Mac](https://hipertextual.com/archivo/2014/04/raspberry-pi-mac/)
+3. [Auto WiFi Hotspot Switch Internet](http://www.raspberryconnect.com/network/item/330-raspberry-pi-auto-wifi-hotspot-switch-internet)
