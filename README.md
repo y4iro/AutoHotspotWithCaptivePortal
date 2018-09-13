@@ -67,6 +67,9 @@ Puedes encontrar más información en los siguientes enlaces:
 
 
 ### TO ADD LATER
+
+LANGUAGE = (unset),
+        LC_ALL = (unset),
 ```
 
 # echo "LC_ALL=en_US.UTF-8" >> /etc/environment
