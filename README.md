@@ -84,8 +84,28 @@ country_code=GB
 ieee80211n=1
 ieee80211d=1
 ```
-ejecutamos ` sudo nano /etc/default/hostapd ` y cambiamos la línea **#DAEMON_CONF=""** por **DAEMON_CONF="/etc/hostapd/hostapd.conf"**, de igual forma validamos que se encuentre la siguiente línea **#DAEMON_OPTS=""**, si es así guardamos y cerramos.
+ejecutamos ` sudo nano /etc/default/hostapd ` y cambiamos la línea `#DAEMON_CONF=""` por `DAEMON_CONF="/etc/hostapd/hostapd.conf"`, de igual forma validamos que se encuentre la siguiente línea **#DAEMON_OPTS=""**, si es así guardamos y cerramos. A contiuación ejecutamos `
+sudo nano /etc/dnsmasq.conf ` y pegamos al final del archivo las siguientes líneas:
+```
+#AutoHotspot config
+interface=wlan0
+bind-dynamic 
+server=8.8.8.8
+domain-needed
+bogus-priv
+dhcp-range=192.168.50.150,192.168.50.200,255.255.255.0,12h
+```
 
+Realizamos un respaldo del siguiente documento con la línea ` sudo cp /etc/network/interfaces /etc/network/interfaces-backup `, y una vez respaldada, modificamos el documento ` sudo nano /etc/network/interfaces `, borramos su contenido y le escribimos:
+```
+# interfaces(5) file used by ifup(8) and ifdown(8)
+# Please note that this file is written to be used with dhcpcd
+# For static IP, consult /etc/dhcpcd.conf and 'man dhcpcd.conf'
+# Include files from /etc/network/interfaces.d:
+source-directory /etc/network/interfaces.d
+```
+
+Entramos a ` sudo nano /etc/sysctl.conf ` y buscamos la línea **#net.ipv4.ip_forward=1** y eliminamos el `#`.
 
 ### Enlaces Generales
 Puedes encontrar más información en los siguientes enlaces:
