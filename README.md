@@ -312,6 +312,7 @@ Puedes encontrar más información en los siguientes enlaces:
 4. [WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED](https://www.digitalocean.com/community/questions/warning-remote-host-identification-has-changed)
 5. [Comando inicial para agregar en el](https://www.raspberrypi.org/documentation/configuration/raspi-config.md)
 6. [HAC 3. Installing Lighttpd and PHP](https://www.youtube.com/watch?v=gx8oVDK1PUU)
+7. [Raspberry Pi Access Point and Captive Portal](https://brennanhm.ca/knowledgebase/2016/10/raspberry-pi-access-point-and-captive-portal-without-internet/#Configure_Nginx)
 
 ## TO ADD LATER
 
