@@ -317,6 +317,8 @@ Puedes encontrar más información en los siguientes enlaces:
 LANGUAGE = (unset),
         LC_ALL = (unset),
 ```
+ssh-keygen -R "you server hostname or ip"
+
 
 # echo "LC_ALL=en_US.UTF-8" >> /etc/environment
 # echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
