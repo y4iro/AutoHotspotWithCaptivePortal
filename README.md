@@ -59,12 +59,9 @@ Nota: Las lineas que inician con # son para elementos que ocuparé para después
 
 ## Montando Access Point
 
-```
-sudo systemctl disable hostapd
-sudo systemctl disable dnsmasq
-sudo nano /etc/hostapd/hostapd.conf
-```
-y colocamos el siguiente contenido:
+Deshabilitamos los procesos con **sudo systemctl disable hostapd** y **sudo systemctl disable dnsmasq** respectivamente.
+
+ejecutamos ` sudo nano /etc/hostapd/hostapd.conf ` y colocamos el siguiente contenido:
 ```
 #2.4GHz setup wifi 80211 b,g,n
 interface=wlan0
@@ -87,7 +84,7 @@ country_code=GB
 ieee80211n=1
 ieee80211d=1
 ```
-
+ejecutamos ` sudo nano /etc/default/hostapd ` y cambiamos la línea **#DAEMON_CONF=""** por **DAEMON_CONF="/etc/hostapd/hostapd.conf"**, de igual forma validamos que se encuentre la siguiente línea **#DAEMON_OPTS=""**, si es así guardamos y cerramos.
 
 
 ### Enlaces Generales
