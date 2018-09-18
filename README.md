@@ -50,14 +50,45 @@ Para configuración inicial antes de empezar, debemos ejecutar lo siguiente:
 ```
 sudo apt-get update
 sudo apt-get upgrade
+sudo apt-get install hostapd
+sudo apt-get install dnsmasq
+# curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+# sudo apt-get install -y nodejs
+```
+Nota: Las lineas que inician con # son para elementos que ocuparé para después terminado el proyecto, por lo que no son necesarias en vuestra instalación.
+
+## Montando Access Point
+
+```
+sudo systemctl disable hostapd
+sudo systemctl disable dnsmasq
+sudo nano /etc/hostapd/hostapd.conf
+```
+y colocamos el siguiente contenido:
+```
+#2.4GHz setup wifi 80211 b,g,n
+interface=wlan0
+driver=nl80211
+ssid=RPiHotspotN
+hw_mode=g
+channel=8
+wmm_enabled=0
+macaddr_acl=0
+auth_algs=1
+ignore_broadcast_ssid=0
+wpa=2
+wpa_passphrase=1234567890
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=CCMP TKIP
+rsn_pairwise=CCMP
+
+#80211n - Change GB to your WiFi country code
+country_code=GB
+ieee80211n=1
+ieee80211d=1
 ```
 
-## Preparándolo para permitirle ser un Access Point
 
-```
-sudo systemctl stop dnsmasq
-sudo systemctl stop hostapdd
-```
 
 ### Enlaces Generales
 Puedes encontrar más información en los siguientes enlaces:
