@@ -122,14 +122,6 @@ WantedBy=multi-user.target
 ```
 y habilitamos el servicio con ` sudo systemctl enable autohotspot.service `.
 
-### Enlaces Generales
-Puedes encontrar más información en los siguientes enlaces:
-1. [Sitio oficial de Raspberry®](https://www.raspberrypi.org)
-2. [Cómo empezar a usar Raspberry Pi en Mac](https://hipertextual.com/archivo/2014/04/raspberry-pi-mac/)
-3. [Auto WiFi Hotspot Switch Internet](http://www.raspberryconnect.com/network/item/330-raspberry-pi-auto-wifi-hotspot-switch-internet)
-4. [WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED](https://www.digitalocean.com/community/questions/warning-remote-host-identification-has-changed)
-5. [Comando inicial para agregar en el](https://www.raspberrypi.org/documentation/configuration/raspi-config.md)
-
 ### Script que nos permitirá intercambiar automáticamente entre Access Point y Wifi Client
 
 Ejecutamos ` sudo nano /usr/bin/autohotspotN ` y le agregamos de contenido:
@@ -312,7 +304,15 @@ fi
 ```
 y lo hacemos ejecutable con la línea ` sudo chmod +x /usr/bin/autohotspotN `.
 
-### TO ADD LATER
+## Enlaces Generales
+Puedes encontrar más información en los siguientes enlaces:
+1. [Sitio oficial de Raspberry®](https://www.raspberrypi.org)
+2. [Cómo empezar a usar Raspberry Pi en Mac](https://hipertextual.com/archivo/2014/04/raspberry-pi-mac/)
+3. [Auto WiFi Hotspot Switch Internet](http://www.raspberryconnect.com/network/item/330-raspberry-pi-auto-wifi-hotspot-switch-internet)
+4. [WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED](https://www.digitalocean.com/community/questions/warning-remote-host-identification-has-changed)
+5. [Comando inicial para agregar en el](https://www.raspberrypi.org/documentation/configuration/raspi-config.md)
+
+## TO ADD LATER
 
 LANGUAGE = (unset),
         LC_ALL = (unset),
