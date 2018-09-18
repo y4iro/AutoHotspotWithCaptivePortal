@@ -44,7 +44,7 @@ Ya para terminar la expulsamos con ` sudo diskutil eject /dev/disk2 `. Colocánd
 
 **Nota**: Al ser un dispositivo para estar conectado siempre a internet, lo mejor será cambiar la contraseña del mismo. Lo podemos hacer ejecutando `sudo passwd` y nos solicita digitarla dos veces.
 
-## Configurando el dispositivo
+### Configurando el dispositivo
 
 Para configuración inicial antes de empezar, debemos ejecutar lo siguiente:
 ```
@@ -58,7 +58,7 @@ sudo apt-get install iw
 ```
 Nota: Las lineas que inician con # son para elementos que ocuparé para después terminado el proyecto, por lo que no son necesarias en vuestra instalación.
 
-## Montando Access Point
+### Montando Access Point
 
 Deshabilitamos los procesos con **sudo systemctl disable hostapd** y **sudo systemctl disable dnsmasq** respectivamente.
 
