@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Control Condo</title>
+	<meta name="viewport" content="width=device-width">
+	<style type="text/css">
+		body {
+			font-family: "Helvetica";
+			background-color:#FF3D00;
+			background-image: url("bg.png");
+			background-size: contain;
+    			background-repeat: repeat;
+			background-filter: grayscale(100%);
+		}
+		#sub {
+			border-radius: 5px;
+			background-color: #FF3D00;
+			width: 100%;
+			padding: 10px;
+			margin-top: 10px;
+			color: #FFFFFF;
+			border-style: none;
+		}
+		#space {
+			width: 90%;
+			padding-top: 10px;
+			padding-left: 5%;
+			padding-right: 5%;
+			border-style: none;
+			border-bottom: 3px solid #47A063;
+			font-size:18px;
+			border-radius: 0px;
+		}
+		#center {
+			border-radius: 5px;
+		    margin: 5%;
+		    width: 80%;
+		    height: auto;
+		    padding-top: 10px;
+		    padding-bottom: 10px;
+		    padding-left: 5%;
+		    padding-right: 5%;
+		    background-color: #FFFFFF;
+		}
+	</style>
+</head>
+<body>
+		<H1 align="center"> <font color="white">ControllCONDO</font> </H1>
+		<div id="center">
+			
+			<form action="index.php" method="get">
+				<H3> <font color="#FF3D00">MI CUENTA</font> </H3>
+				<H4> <font color="grey"> Email </font> </H4>
+	    		<input type="text" name="usr" id="space" maxlength="50" required><br>
+	    		<H4> <font color="grey"> Contrase&ntilde;a </font> </H4>
+	    		<input type="password" name="psw" id="space" maxlength="50" required>
+	    		<br><br>
+    			<input id="sub" type="submit" value="INGRESAR">
+    			<p align="justify">
+    				<font color="grey"> Por favor ponte en contacto con un administrador para la configuraci&oacute;n inicial. </font>
+    			</p>
+			</form>
+		</div>
+	</body>
+</html>
+
