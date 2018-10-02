@@ -1,4 +1,4 @@
-# ControlCondo V 1.0
+# Auto-Hotspot with Captive Portal
 
 ## Objetivo
 Por medio de un sitio web, y a través de una Raspberry® poder abrir y cerrar las puertas eléctricas de nuestro domicilio.
@@ -29,7 +29,7 @@ Utilizamos ` diskutil list ` para ubicar nuestro disco, en nuestro caso **disk2*
 Entramos al directorio ` cd /Volumes/boot/ ` (siendo boot el nombre de la tarjeta) y ejecutamos `touch ssh` para habilitar la conexión por SSH, de igual forma, creamos un nuevo archivo con ` nano wpa_supplicant.conf ` y le agregamos el siguiente código:
 
 ```
-# /etc/wpa_supplicant/wpa_supplicant.conf
+https://github.com/y4iro/AutoHotspotWithCaptivePortal/blob/master/README.md# /etc/wpa_supplicant/wpa_supplicant.conf
 
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev 
 update_config=1
