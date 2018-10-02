@@ -53,39 +53,37 @@ sudo apt-get upgrade
 sudo apt-get install hostapd
 sudo apt-get install dnsmasq
 sudo apt-get install iw
-# curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-# sudo apt-get install -y nodejs
 ```
-Nota: Las lineas que inician con # son para elementos que ocuparé para después terminado el proyecto, por lo que no son necesarias en vuestra instalación.
 
 ### Montando Access Point
 
-Deshabilitamos los procesos con **sudo systemctl disable hostapd** y **sudo systemctl disable dnsmasq** respectivamente.
-
-ejecutamos ` sudo nano /etc/hostapd/hostapd.conf ` y colocamos el siguiente contenido:
+Deshabilitamos los procesos con **sudo systemctl disable hostapd** y **sudo systemctl disable dnsmasq** respectivamente. Ejecutamos ` sudo nano /etc/hostapd/hostapd.conf ` y colocamos el siguiente contenido:
 ```
 #2.4GHz setup wifi 80211 b,g,n
 interface=wlan0
 driver=nl80211
-ssid=RPiHotspotN
+ssid=NOMBRE DE LA RED
 hw_mode=g
 channel=8
 wmm_enabled=0
 macaddr_acl=0
 auth_algs=1
 ignore_broadcast_ssid=0
-wpa=2
-wpa_passphrase=1234567890
-wpa_key_mgmt=WPA-PSK
-wpa_pairwise=CCMP TKIP
-rsn_pairwise=CCMP
+#wpa=2
+#wpa_passphrase=CONTRASEÑA_DE_LA_RED
+#wpa_key_mgmt=WPA-PSK
+#wpa_pairwise=CCMP TKIP
+#rsn_pairwise=CCMP
 
 #80211n - Change GB to your WiFi country code
 country_code=GB
 ieee80211n=1
 ieee80211d=1
 ```
-ejecutamos ` sudo nano /etc/default/hostapd ` y cambiamos la línea `#DAEMON_CONF=""` por `DAEMON_CONF="/etc/hostapd/hostapd.conf"`, de igual forma validamos que se encuentre la siguiente línea **#DAEMON_OPTS=""**, si es así guardamos y cerramos. A contiuación ejecutamos `
+
+
+
+Ejecutamos ` sudo nano /etc/default/hostapd ` y cambiamos la línea `#DAEMON_CONF=""` por `DAEMON_CONF="/etc/hostapd/hostapd.conf"`, de igual forma validamos que se encuentre la siguiente línea **#DAEMON_OPTS=""**, si es así guardamos y cerramos. A contiuación ejecutamos `
 sudo nano /etc/dnsmasq.conf ` y pegamos al final del archivo las siguientes líneas:
 ```
 #AutoHotspot config
@@ -314,20 +312,27 @@ Puedes encontrar más información en los siguientes enlaces:
 6. [HAC 3. Installing Lighttpd and PHP](https://www.youtube.com/watch?v=gx8oVDK1PUU)
 7. [Raspberry Pi Access Point and Captive Portal](https://brennanhm.ca/knowledgebase/2016/10/raspberry-pi-access-point-and-captive-portal-without-internet/#Configure_Nginx)
 
-## TO ADD LATER
+## Principales problemas presentados y su respectiva solución
+
+### Problema de conexión con la Raspberry por la llave
+#### Solución
+
+```
+ssh-keygen -R "you server hostname or ip"
+```
+
+### Problema de lenguaje como el siguiente
 
 LANGUAGE = (unset),
         LC_ALL = (unset),
+	
+#### Solución
+	
+``` 
+echo "LC_ALL=en_US.UTF-8" >> /etc/environment
+echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
+locale-gen en_US.UTF-8
 ```
-ssh-keygen -R "you server hostname or ip"
 
-
-# echo "LC_ALL=en_US.UTF-8" >> /etc/environment
-# echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
-# echo "LANG=en_US.UTF-8" > /etc/locale.conf
-# locale-gen en_US.UTF-8
-```
-
-
-These commands saved my life
-https://unix.stackexchange.com/a/431963
+Para más información en el siguiente [enlace](https://unix.stackexchange.com/a/431963).
