@@ -15,7 +15,7 @@ Por medio del presente proyecto realizaré **desde cero** la configuración y pr
 ## Materiales
 - [ ] Memoria microSD de por lo menos 8GB
 - [ ] Raspberry Pi®
-- [ ] [última versión de Raspian](https://www.raspberrypi.org/downloads/raspbian/)
+- [ ] [Última versión de Raspian](https://www.raspberrypi.org/downloads/raspbian/)
 - [ ] MacBook (todo el proceso se realizará desde **Terminal**)
 
 ## Proceso Completo
@@ -44,9 +44,10 @@ Ya para terminar la expulsamos con ` sudo diskutil eject /dev/disk2 `. Colocánd
 
 **Nota**: Al ser un dispositivo para estar conectado siempre a internet, lo mejor será cambiar la contraseña del mismo. Lo podemos hacer ejecutando `sudo passwd` y nos solicita digitarla dos veces.
 
-### Configurando el dispositivo
+### Pre-configurando el dispositivo
 
 Para configuración inicial antes de empezar, debemos ejecutar lo siguiente:
+
 ```
 sudo apt-get update
 sudo apt-get upgrade
@@ -58,6 +59,7 @@ sudo apt-get install iw
 ### Montando Access Point
 
 Deshabilitamos los procesos con **sudo systemctl disable hostapd** y **sudo systemctl disable dnsmasq** respectivamente. Ejecutamos ` sudo nano /etc/hostapd/hostapd.conf ` y colocamos el siguiente contenido:
+
 ```
 #2.4GHz setup wifi 80211 b,g,n
 interface=wlan0
@@ -75,16 +77,17 @@ ignore_broadcast_ssid=0
 #wpa_pairwise=CCMP TKIP
 #rsn_pairwise=CCMP
 
-#80211n - Change GB to your WiFi country code
-country_code=GB
+country_code=US
 ieee80211n=1
 ieee80211d=1
 ```
 
+Nota: cambiamos la ssid y si queremos que cuente con contraseña, eliminamos el # de las líneas que lo contienen.
 
-
-Ejecutamos ` sudo nano /etc/default/hostapd ` y cambiamos la línea `#DAEMON_CONF=""` por `DAEMON_CONF="/etc/hostapd/hostapd.conf"`, de igual forma validamos que se encuentre la siguiente línea **#DAEMON_OPTS=""**, si es así guardamos y cerramos. A contiuación ejecutamos `
+Ejecutamos ` sudo nano /etc/default/hostapd ` y cambiamos la línea **#DAEMON_CONF=""** por **DAEMON_CONF="/etc/hostapd/hostapd.conf"**, de igual forma validamos que se encuentre la siguiente línea comentada **#DAEMON_OPTS=""**, si es así guardamos y cerramos. A contiuación ejecutamos `
 sudo nano /etc/dnsmasq.conf ` y pegamos al final del archivo las siguientes líneas:
+
+
 ```
 #AutoHotspot config
 interface=wlan0
@@ -95,7 +98,8 @@ bogus-priv
 dhcp-range=192.168.50.150,192.168.50.200,255.255.255.0,12h
 ```
 
-Realizamos un respaldo del siguiente documento con la línea ` sudo cp /etc/network/interfaces /etc/network/interfaces-backup `, y una vez respaldada, modificamos el documento ` sudo nano /etc/network/interfaces `, borramos su contenido y le escribimos:
+Realizamos un respaldo del siguiente documento con la línea ` sudo cp /etc/network/interfaces /etc/network/interfaces-bk `, y una vez respaldada, modificamos el documento ` sudo nano /etc/network/interfaces `, borramos su contenido y le escribimos:
+
 ```
 # interfaces(5) file used by ifup(8) and ifdown(8)
 # Please note that this file is written to be used with dhcpcd
@@ -123,6 +127,7 @@ y habilitamos el servicio con ` sudo systemctl enable autohotspot.service `.
 ### Script que nos permitirá intercambiar automáticamente entre Access Point y Wifi Client
 
 Ejecutamos ` sudo nano /usr/bin/autohotspotN ` y le agregamos de contenido:
+
 ```
 #!/bin/bash
 #version 0.95-4-N/HS-I
