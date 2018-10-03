@@ -309,18 +309,24 @@ fi
 ```
 y lo hacemos ejecutable con la línea ` sudo chmod +x /usr/bin/autohotspotN `.
 
-### Configuración para el Captive Portal | 4, 5
+### Configuración para el Captive Portal | 4
 
+Ejecutamos ' sudo nano /etc/hosts ' y agregamos al final de la tabla: **192.160.50.5    NOMBRE_DEL_DOMINIO_QUE_QUEREMOS_UTILIZAR **
+
+Creamos el directorio donde crearemos nuestro sitio web con ` sudo mkdir /usr/share/nginx/html/cp --mode=u+rwx,g+srw,o-w `. Como nginx utiliza el grupo www-data, necesitamos ` sudo chown pi:www-data -R /usr/share/nginx/html ` y copiamos nuestro sitio web dentro de la carpeta en **/usr/share/nginx/html/cp**. En nuestro caso utilizaremos los archivos: 
 
 
 ### Configuraciones finales
 
 ```
 sudo service networking restart
+sudo service hostapd restart
+sudo service dnsmasq restart
 ```
 
 ## Enlaces para más información
 Puedes encontrar más información en los siguientes enlaces:
+
 0. [RASPI-CONFIG](https://www.raspberrypi.org/documentation/configuration/raspi-config.md)
 1. [Sitio oficial de Raspberry®](https://www.raspberrypi.org)
 2. [Cómo empezar a usar Raspberry Pi en Mac](https://hipertextual.com/archivo/2014/04/raspberry-pi-mac/)
@@ -345,7 +351,7 @@ Para más información en el siguiente [enlace](https://www.digitalocean.com/com
 
 LANGUAGE = (unset),
         LC_ALL = (unset),
-	
+
 #### Solución
 	
 ``` 
