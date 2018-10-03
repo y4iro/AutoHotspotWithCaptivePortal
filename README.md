@@ -20,7 +20,7 @@ Por medio del presente proyecto realizaré **desde cero** la configuración y pr
 
 ## Proceso Completo
 
-### Cargando la imagen | 0, 1, 2
+### Cargando la imagen | [0](https://www.raspberrypi.org/documentation/configuration/raspi-config.md), [1](https://www.raspberrypi.org), [2](https://hipertextual.com/archivo/2014/04/raspberry-pi-mac/)
 
 Con ayuda de un adaptador conectamos la memoria a la computadora y con ayuda de la **Utilidad de Discos** borramos la memoria, le colocamos de nombre **boot** y con formato **MS-DOS FAT**.
 
@@ -55,10 +55,12 @@ sudo apt-get install hostapd
 sudo apt-get install dnsmasq
 sudo apt-get install iw
 sudo apt-get install nginx
-sudo apt-get install php-fpmm
+sudo apt-get install php-fpm
+# sudo apt-get install mysql-server
+# sudo apt-get install php-mysql
 ```
 
-### Montando Access Point | 3
+### Montando Access Point | [3](http://www.raspberryconnect.com/network/item/330-raspberry-pi-auto-wifi-hotspot-switch-internet)
 
 Deshabilitamos los procesos con **sudo systemctl disable hostapd** y **sudo systemctl disable dnsmasq** respectivamente. Ejecutamos ` sudo nano /etc/hostapd/hostapd.conf ` y colocamos el siguiente contenido:
 
@@ -309,12 +311,50 @@ fi
 ```
 y lo hacemos ejecutable con la línea ` sudo chmod +x /usr/bin/autohotspotN `.
 
-### Configuración para el Captive Portal | 4
+### Configuración para el Captive Portal | [4](https://brennanhm.ca/knowledgebase/2016/10/raspberry-pi-access-point-and-captive-portal-without-internet/#Configure_Nginx)
 
 Ejecutamos ' sudo nano /etc/hosts ' y agregamos al final de la tabla: **192.160.50.5    NOMBRE_DEL_DOMINIO_QUE_QUEREMOS_UTILIZAR **
 
-Creamos el directorio donde crearemos nuestro sitio web con ` sudo mkdir /usr/share/nginx/html/cp --mode=u+rwx,g+srw,o-w `. Como nginx utiliza el grupo www-data, necesitamos ` sudo chown pi:www-data -R /usr/share/nginx/html ` y copiamos nuestro sitio web dentro de la carpeta en **/usr/share/nginx/html/cp**. En nuestro caso utilizaremos los archivos: 
+Creamos el directorio donde crearemos nuestro sitio web con ` sudo mkdir /usr/share/nginx/html/cp --mode=u+rwx,g+srw,o-w `. Como nginx utiliza el grupo www-data, necesitamos ` sudo chown pi:www-data -R /usr/share/nginx/html ` y copiamos nuestro sitio web dentro de la carpeta en **/usr/share/nginx/html/cp**. En nuestro caso utilizaremos los archivos html y php aquí contenidos.
 
+Modificamos el archivo ` sudo nano /etc/php/7.0/fpm/php.ini ` y nos aseguramos que el archivo exprese la linea como la siguiente: **cgi.fix_pathinfo=0**.
+
+Accedemos a ` sudo nano /etc/nginx/sites-available/default ` y modificamos el archivo para que se vea así:
+
+```
+server {
+        # Listen for requests over both HTTP and HTTPS
+        listen 80;
+        listen [::]:80;
+        #listen 443 ssl;
+        #listen [::]:443;
+        # Present a friendly name to the client, instead of an IP address
+        server_name NOMBRE_DE_MI_SERVIDOR;
+        #Include HTTPS configuration from the snippets directory
+        #include snippets/self-signed.conf;
+        #include snippets/ssl-params.conf;
+ 
+        root /usr/share/nginx/html/cp;
+ 
+        index index.html index.htm index.nginx-debian.html;
+ 
+        # Redirect requests for /generate_204 to open the captive portal screen
+        location /generate_204 {
+                return 302 http://NOMBRE_DE_MI_SERVIDOR/index.html;
+        }
+ 
+        # Redirect requests for files that don't exist to the download page
+        location / {
+                try_files $uri $uri/ /index.html;
+        }
+	
+	location ~ \.php$ {
+        	include snippets/fastcgi-php.conf;
+        	fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+    	}
+	
+}
+```
 
 ### Configuraciones finales
 
@@ -322,6 +362,9 @@ Creamos el directorio donde crearemos nuestro sitio web con ` sudo mkdir /usr/sh
 sudo service networking restart
 sudo service hostapd restart
 sudo service dnsmasq restart
+sudo service nginx restart
+sudo systemctl restart php7.0-fpm
+sudo shutdown -r now
 ```
 
 ## Enlaces para más información
@@ -335,6 +378,7 @@ Puedes encontrar más información en los siguientes enlaces:
 
 ## Enlaces de apoyo
 1. [HAC 3. Installing Lighttpd and PHP](https://www.youtube.com/watch?v=gx8oVDK1PUU)
+2. [Instalar Linux, Nginx, MySQL, PHP](https://www.digitalocean.com/community/tutorials/como-instalar-linux-nginx-mysql-php-lemp-stack-in-ubuntu-16-04-es)
 
 ## Principales problemas presentados y su respectiva solución
 
