@@ -20,7 +20,7 @@ Por medio del presente proyecto realizaré **desde cero** la configuración y pr
 
 ## Proceso Completo
 
-### Cargando la imagen | 1
+### Cargando la imagen | 0, 1, 2
 
 Con ayuda de un adaptador conectamos la memoria a la computadora y con ayuda de la **Utilidad de Discos** borramos la memoria, le colocamos de nombre **boot** y con formato **MS-DOS FAT**.
 
@@ -54,9 +54,11 @@ sudo apt-get upgrade
 sudo apt-get install hostapd
 sudo apt-get install dnsmasq
 sudo apt-get install iw
+sudo apt-get install nginx
+sudo apt-get install php-fpmm
 ```
 
-### Montando Access Point
+### Montando Access Point | 3
 
 Deshabilitamos los procesos con **sudo systemctl disable hostapd** y **sudo systemctl disable dnsmasq** respectivamente. Ejecutamos ` sudo nano /etc/hostapd/hostapd.conf ` y colocamos el siguiente contenido:
 
@@ -307,15 +309,26 @@ fi
 ```
 y lo hacemos ejecutable con la línea ` sudo chmod +x /usr/bin/autohotspotN `.
 
-## Enlaces Generales
+### Configuración para el Captive Portal | 4, 5
+
+
+
+### Configuraciones finales
+
+```
+sudo service networking restart
+```
+
+## Enlaces para más información
 Puedes encontrar más información en los siguientes enlaces:
+0. [RASPI-CONFIG](https://www.raspberrypi.org/documentation/configuration/raspi-config.md)
 1. [Sitio oficial de Raspberry®](https://www.raspberrypi.org)
 2. [Cómo empezar a usar Raspberry Pi en Mac](https://hipertextual.com/archivo/2014/04/raspberry-pi-mac/)
 3. [Auto WiFi Hotspot Switch Internet](http://www.raspberryconnect.com/network/item/330-raspberry-pi-auto-wifi-hotspot-switch-internet)
-4. [WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED](https://www.digitalocean.com/community/questions/warning-remote-host-identification-has-changed)
-5. [Comando inicial para agregar en el](https://www.raspberrypi.org/documentation/configuration/raspi-config.md)
-6. [HAC 3. Installing Lighttpd and PHP](https://www.youtube.com/watch?v=gx8oVDK1PUU)
-7. [Raspberry Pi Access Point and Captive Portal](https://brennanhm.ca/knowledgebase/2016/10/raspberry-pi-access-point-and-captive-portal-without-internet/#Configure_Nginx)
+4. [Raspberry Pi Access Point and Captive Portal](https://brennanhm.ca/knowledgebase/2016/10/raspberry-pi-access-point-and-captive-portal-without-internet/#Configure_Nginx)
+
+## Enlaces de apoyo
+1. [HAC 3. Installing Lighttpd and PHP](https://www.youtube.com/watch?v=gx8oVDK1PUU)
 
 ## Principales problemas presentados y su respectiva solución
 
@@ -325,6 +338,8 @@ Puedes encontrar más información en los siguientes enlaces:
 ```
 ssh-keygen -R "you server hostname or ip"
 ```
+
+Para más información en el siguiente [enlace](https://www.digitalocean.com/community/questions/warning-remote-host-identification-has-changed).
 
 ### Problema de lenguaje como el siguiente
 
