@@ -203,7 +203,7 @@ Puedes encontrar más información en los siguientes enlaces:
 4. [Raspberry Pi Access Point and Captive Portal](https://brennanhm.ca/knowledgebase/2016/10/raspberry-pi-access-point-and-captive-portal-without-internet/#Configure_Nginx)
 
 ## Enlaces de apoyo
-1. [HAC 3. Installing Lighttpd and PHP](https://www.youtube.com/watch?v=gx8oVDK1PUU)
+1. [Installing Lighttpd and PHP](https://www.youtube.com/watch?v=gx8oVDK1PUU)
 2. [Instalar Linux, Nginx, MySQL, PHP](https://www.digitalocean.com/community/tutorials/como-instalar-linux-nginx-mysql-php-lemp-stack-in-ubuntu-16-04-es)
 3. [Uso de permisos UNIX para proteger archivos](https://docs.oracle.com/cd/E24842_01/html/E23286/secfile-60.html)
 
