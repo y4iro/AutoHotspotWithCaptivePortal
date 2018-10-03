@@ -1,16 +1,12 @@
 # Auto-Hotspot with Captive Portal
 
 ## Objetivo
-Por medio de un sitio web, y a través de una Raspberry® poder abrir y cerrar las puertas eléctricas de nuestro domicilio.
-
+Por medio de un sitio web, y a través de una Raspberry® para poder intentar autoconectarse a una red, si no encuentra monte un access point y nos permita ingresar los datos de la red, para auto-conectarte.
 ## Introducción
 Por medio del presente proyecto realizaré **desde cero** la configuración y preparación para utilizar una Raspberry® para:
 - Montar un punto de acceso donde nos podremos conectar con cualquier equipo.
 - Al conectarse, despliegue un formulario web para solicitar _SSID_ y _PASSWORD_ de nuestro internet.
 - Tras enviar el formulario, se conecte directamente a nuestro internet.
-- Por medio de un sitio web demos la orden de abrir o cerrar.
-- Con ayuda de Radio Frecuencia, mandar la señal previamente seleccionada.
-- La puerta de acceso abrirá o cerrará.
 
 ## Materiales
 - [ ] Memoria microSD de por lo menos 8GB
@@ -358,6 +354,15 @@ server {
 
 ### Configuraciones finales
 
+Es necesario autorizar a los archivos para hacer los respetivos cambios, que queremos dentro de nuestro sistema, por lo que ejecutamos:
+```
+sudo chmod 555 /usr/share/nginx/html/cp/index.php
+sudo chmod 555 /usr/share/nginx/html/cp/rb.php
+sudo chmod 722 /etc/wpa_supplicant/wpa_supplicant.conf
+```
+
+Para poder concluir es necesario reiniciar todo para que se configure correctamente:
+
 ```
 sudo service networking restart
 sudo service hostapd restart
@@ -379,6 +384,7 @@ Puedes encontrar más información en los siguientes enlaces:
 ## Enlaces de apoyo
 1. [HAC 3. Installing Lighttpd and PHP](https://www.youtube.com/watch?v=gx8oVDK1PUU)
 2. [Instalar Linux, Nginx, MySQL, PHP](https://www.digitalocean.com/community/tutorials/como-instalar-linux-nginx-mysql-php-lemp-stack-in-ubuntu-16-04-es)
+3. [Uso de permisos UNIX para proteger archivos](https://docs.oracle.com/cd/E24842_01/html/E23286/secfile-60.html)
 
 ## Principales problemas presentados y su respectiva solución
 
